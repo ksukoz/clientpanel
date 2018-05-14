@@ -7,7 +7,7 @@ import { Client } from '../models/Client';
   providedIn: 'root'
 })
 export class ClientService {
-  clients: AngularFireList<any[]>;
+  clients: AngularFireList<any>;
   client: AngularFireObject<any>;
   
   constructor(
