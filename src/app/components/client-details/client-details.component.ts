@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../../services/client.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Client } from '../../models/Client';
 
 @Component({
   selector: 'app-client-details',
@@ -6,10 +10,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
+  id:string;
+  client:Client;
+  hasBalance:boolean = false;
+  showBalanceUpdateInput:boolean = false;
 
-  constructor() { }
+  constructor(
+    public clientService:ClientService,
+    public router:Router,
+    public route:ActivatedRoute,
+    public flashMessagesService:FlashMessagesService
+  ) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    //Get client
+    this.clientService.getClient(this.id).snapshotChanges().
+    map(action => {
+        const data = action.payload.val();
+        const $key = action.payload.key;
+        return { $key, ...data };}
+    ).subscribe(client => {
+      if(client.balance > 0) {
+        this.hasBalance = true;
+      }
+      this.client = client;
+      console.log(this.client)
+    })
   }
 
 }

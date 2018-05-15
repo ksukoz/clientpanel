@@ -23,4 +23,9 @@ export class ClientService {
   newClient(client:Client) {
     this.clients.push(client);
   }
+
+  getClient(id:string) {
+    this.client = this.af.object<Client>('/clients/'+id) as AngularFireObject<Client>;
+    return this.client;
+  }
 }

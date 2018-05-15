@@ -18,7 +18,14 @@ export class ClientsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clientService.getClients().valueChanges().subscribe(clients => {
+    this.clientService.getClients().snapshotChanges().
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.val();
+          const $key = a.payload.key;
+          return { $key, ...data };
+        })}
+      ).subscribe(clients => {
       this.clients = clients;
       this.getTotalOwed();
     });
