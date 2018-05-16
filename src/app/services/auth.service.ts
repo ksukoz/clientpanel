@@ -18,4 +18,13 @@ export class AuthService {
                 err => reject(err));
     })
   }
+
+  getAuth() {
+    return this.afAuth.authState.map(auth => auth);
+  }
+
+
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }
