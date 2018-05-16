@@ -34,4 +34,8 @@ export class ClientService {
     delete client.$key;
     return this.clients.update(id, client)
   }
+
+  deleteClient(id:string) {
+    return this.clients.remove(id);
+  }
 }
