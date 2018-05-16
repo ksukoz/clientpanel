@@ -28,4 +28,10 @@ export class ClientService {
     this.client = this.af.object<Client>('/clients/'+id) as AngularFireObject<Client>;
     return this.client;
   }
+
+  updateClient(id:string, client:Client) {
+    const key = client.$key;
+    delete client.$key;
+    return this.clients.update(id, client)
+  }
 }

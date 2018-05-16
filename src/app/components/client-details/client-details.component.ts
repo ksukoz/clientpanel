@@ -24,6 +24,7 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
+    
     //Get client
     this.clientService.getClient(this.id).snapshotChanges().
     map(action => {
@@ -35,8 +36,13 @@ export class ClientDetailsComponent implements OnInit {
         this.hasBalance = true;
       }
       this.client = client;
-      console.log(this.client)
     })
+  }
+
+  updateBalance(id:string) {
+    this.clientService.updateClient(this.id, this.client);
+    this.flashMessagesService.show('Balance Updated', {cssClass:'alert-success', timeout: 4000});
+    this.router.navigate(['/client/' + this.id])
   }
 
 }
