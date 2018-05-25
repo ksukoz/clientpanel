@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsService } from '../../services/settings.service';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Settings } from '../../models/Settings';
 
 @Component({
   selector: 'app-settings',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  settings:Settings;
 
-  constructor() { }
+  constructor(
+    public settingService:SettingsService,
+    public flashMessagesService:FlashMessagesService,
+    public router:Router
+  ) { }
 
   ngOnInit() {
+    this.settings = this.settingService.getSettings();
   }
 
 }
