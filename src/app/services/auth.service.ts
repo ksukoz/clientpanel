@@ -27,4 +27,12 @@ export class AuthService {
   logout() {
     this.afAuth.auth.signOut();
   }
+
+  register(email, password) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+          .then(userData => resolve(userData),
+                err => reject(err));
+    })
+  }
 }
