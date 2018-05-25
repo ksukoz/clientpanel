@@ -16,15 +16,15 @@
     <form (submit)="onSubmit()">
       <div class="form-group">
         <label> Allow registration</label>
-        <input type="checkbox" name="allowRegistration" id="" [checked]="settings.allowRegistration" (change)="setting.allowRegistration = !setting.allowRegistration">
+        <input type="checkbox" name="allowRegistration" id="" [checked]="settings.allowRegistration" (change)="settings.allowRegistration = !settings.allowRegistration">
       </div>
       <div class="form-group">
         <label>Disable balance on add</label>
-        <input type="checkbox" name="disableBalanceOnAdd" id="" [checked]="settings.disableBalanceOnAdd" (change)="setting.disableBalanceOnAdd = !setting.disableBalanceOnAdd">
+        <input type="checkbox" name="disableBalanceOnAdd" id="" [checked]="settings.disableBalanceOnAdd" (change)="settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd">
       </div>
       <div class="form-group">
         <label>Disable balance on edit</label>
-        <input type="checkbox" name="disableBalanceOnEdit" id="" [checked]="settings.disableBalanceOnEdit" (change)="setting.disableBalanceOnEdit = !setting.disableBalanceOnEdit">
+        <input type="checkbox" name="disableBalanceOnEdit" id="" [checked]="settings.disableBalanceOnEdit" (change)="settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit">
       </div>
       <input type="submit" value="Submit" class="btn btn-primary btn-block">
     </form>
