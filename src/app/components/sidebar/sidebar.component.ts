@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Settings } from '../../models/Settings';
 
 @Component({
   selector: 'app-sidebar',
